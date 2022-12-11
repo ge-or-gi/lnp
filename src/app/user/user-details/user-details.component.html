@@ -1,0 +1,30 @@
+<!-- @format -->
+
+<div class="p-6">
+  <p class="text-lg font-bold">{{ user.id }}</p>
+  <p class="text-gray-400 text-xs">{{ user.created | date : 'MMMM d, y, h:mm:ss a' }}, {{ user.location }}</p>
+  <div class="flex flex-row gap-x-3 justify-between mt-4 mb-4">
+    <div class="bg-neutral-300 p-4 rounded w-full">
+      <p class="text-neutral-500 text-xs">Devices</p>
+      <p class="text-lg font-bold">{{ user.devices }}</p>
+    </div>
+    <div class="bg-neutral-300 p-4 rounded w-full">
+      <p class="text-neutral-500 text-xs">Sessions</p>
+      <p class="text-lg font-bold">{{ user.sessions.length }}</p>
+    </div>
+    <div class="bg-neutral-300 p-4 rounded w-full">
+      <p class="text-neutral-500 text-xs">Events</p>
+      <p class="text-lg font-bold">{{ user.events }}</p>
+    </div>
+  </div>
+  <section>
+    <div class="flex flex-row justify-between border-b-2 border-slate-200 p-2 text-gray-400 font-semibold">
+      <span class="w-full">Attribute</span>
+      <span class="w-full">Value</span>
+    </div>
+    <div *ngFor="let item of user.attributes | keyvalue" class="flex flex-row justify-between p-2 border-b border-slate-200">
+      <span class="w-full text-gray-700">{{ item.key }}</span>
+      <span class="w-full text-gray-700">{{ item.value }}</span>
+    </div>
+  </section>
+</div>

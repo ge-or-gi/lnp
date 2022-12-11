@@ -1,0 +1,22 @@
+<!-- @format -->
+
+<div class="flex flex-row">
+  <section class="w-full bg-neutral-50  flex flex-col">
+    <p class="text-base font-bold pt-6 pl-6 pr-6">Users in Audience</p>
+    <p class="text-xs text-slate-400 border-b-slate-200 pb-6 pl-6 pr-6 border-b-2">
+      Total Users - Showing {{ users.length }} matching users
+    </p>
+    <div class="bg-neutral-50 p-6">
+      <app-user
+        *ngFor="let user of users; let i = index"
+        [ngClass]="{'ring-2 ring-slate-700 flex rounded': isSelected === i}"
+        (click)="handleClick(i)"
+        [user]="user"
+        (onUserSelect)="handleUserSelect($event)"
+      ></app-user>
+    </div>
+  </section>
+  <div class="shadow-2xl w-full h-screen bg-gray-50 sticky top-0">
+    <app-user-details [user]="user" *ngIf="user"></app-user-details>
+  </div>
+</div>
